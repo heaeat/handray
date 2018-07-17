@@ -1,0 +1,36 @@
+(gdb) disass main
+Dump of assembler code for function main:
+   0x0000000000400566 <+0>:	push   rbp
+   0x0000000000400567 <+1>:	mov    rbp,rsp
+   0x000000000040056a <+4>:	sub    rsp,0x20
+   0x000000000040056e <+8>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000000000400571 <+11>:	mov    QWORD PTR [rbp-0x20],rsi
+   0x0000000000400575 <+15>:	mov    DWORD PTR [rbp-0x8],0x0
+   0x000000000040057c <+22>:	mov    DWORD PTR [rbp-0x4],0x0
+   0x0000000000400583 <+29>:	cmp    DWORD PTR [rbp-0x14],0x2
+   0x0000000000400587 <+33>:	je     0x400593 <main+45>
+   0x0000000000400589 <+35>:	mov    edi,0x0
+   0x000000000040058e <+40>:	call   0x400450 <exit@plt>
+   0x0000000000400593 <+45>:	mov    DWORD PTR [rbp-0x8],0x1
+   0x000000000040059a <+52>:	jmp    0x4005cb <main+101>
+   0x000000000040059c <+54>:	mov    DWORD PTR [rbp-0x4],0x1
+   0x00000000004005a3 <+61>:	jmp    0x4005c1 <main+91>
+   0x00000000004005a5 <+63>:	mov    eax,DWORD PTR [rbp-0x8]
+   0x00000000004005a8 <+66>:	imul   eax,DWORD PTR [rbp-0x4]
+   0x00000000004005ac <+70>:	mov    esi,eax
+   0x00000000004005ae <+72>:	mov    edi,0x400664
+   0x00000000004005b3 <+77>:	mov    eax,0x0
+   0x00000000004005b8 <+82>:	call   0x400430 <printf@plt>
+   0x00000000004005bd <+87>:	add    DWORD PTR [rbp-0x4],0x1
+   0x00000000004005c1 <+91>:	cmp    DWORD PTR [rbp-0x4],0x9
+   0x00000000004005c5 <+95>:	jle    0x4005a5 <main+63>
+   0x00000000004005c7 <+97>:	add    DWORD PTR [rbp-0x8],0x1
+   0x00000000004005cb <+101>:	cmp    DWORD PTR [rbp-0x8],0x9
+   0x00000000004005cf <+105>:	jle    0x40059c <main+54>
+   0x00000000004005d1 <+107>:	mov    eax,0x0
+   0x00000000004005d6 <+112>:	leave  
+   0x00000000004005d7 <+113>:	ret    
+End of assembler dump.
+(gdb) x/s 0x400664
+0x400664:       "%d\n"
+

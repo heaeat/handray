@@ -1,0 +1,133 @@
+(gdb) disass main
+Dump of assembler code for function main:
+   0x00000000004006f9 <+0>:	push   rbp
+   0x00000000004006fa <+1>:	mov    rbp,rsp
+   0x00000000004006fd <+4>:	sub    rsp,0x20
+   0x0000000000400701 <+8>:	mov    rax,QWORD PTR fs:0x28
+   0x000000000040070a <+17>:	mov    QWORD PTR [rbp-0x8],rax
+   0x000000000040070e <+21>:	xor    eax,eax
+   0x0000000000400710 <+23>:	lea    rax,[rbp-0x20]
+   0x0000000000400714 <+27>:	mov    rdi,rax
+   0x0000000000400717 <+30>:	call   0x4005d6 <list_init>
+   0x000000000040071c <+35>:	lea    rax,[rbp-0x20]
+   0x0000000000400720 <+39>:	mov    esi,0x1
+   0x0000000000400725 <+44>:	mov    rdi,rax
+   0x0000000000400728 <+47>:	call   0x4005fc <list_add_to_tail>
+   0x000000000040072d <+52>:	lea    rax,[rbp-0x20]
+   0x0000000000400731 <+56>:	mov    esi,0x2
+   0x0000000000400736 <+61>:	mov    rdi,rax
+   0x0000000000400739 <+64>:	call   0x4005fc <list_add_to_tail>
+   0x000000000040073e <+69>:	lea    rax,[rbp-0x20]
+   0x0000000000400742 <+73>:	mov    esi,0x3
+   0x0000000000400747 <+78>:	mov    rdi,rax
+   0x000000000040074a <+81>:	call   0x4005fc <list_add_to_tail>
+   0x000000000040074f <+86>:	lea    rax,[rbp-0x20]
+   0x0000000000400753 <+90>:	mov    rdi,rax
+   0x0000000000400756 <+93>:	call   0x4006b3 <list_printall>
+   0x000000000040075b <+98>:	mov    eax,0x0
+   0x0000000000400760 <+103>:	mov    rdx,QWORD PTR [rbp-0x8]
+   0x0000000000400764 <+107>:	xor    rdx,QWORD PTR fs:0x28
+   0x000000000040076d <+116>:	je     0x400774 <main+123>
+   0x000000000040076f <+118>:	call   0x400490 <__stack_chk_fail@plt>
+   0x0000000000400774 <+123>:	leave  
+   0x0000000000400775 <+124>:	ret    
+End of assembler dump.
+(gdb) disass list_init 
+Dump of assembler code for function list_init:
+   0x00000000004005d6 <+0>:	push   rbp
+   0x00000000004005d7 <+1>:	mov    rbp,rsp
+   0x00000000004005da <+4>:	mov    QWORD PTR [rbp-0x8],rdi
+   0x00000000004005de <+8>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x00000000004005e2 <+12>:	mov    QWORD PTR [rax+0x8],0x0
+   0x00000000004005ea <+20>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x00000000004005ee <+24>:	mov    rdx,QWORD PTR [rax+0x8]
+   0x00000000004005f2 <+28>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x00000000004005f6 <+32>:	mov    QWORD PTR [rax],rdx
+   0x00000000004005f9 <+35>:	nop
+   0x00000000004005fa <+36>:	pop    rbp
+   0x00000000004005fb <+37>:	ret    
+End of assembler dump.
+(gdb) disassemble list_add_to_tail 
+Dump of assembler code for function list_add_to_tail:
+   0x00000000004005fc <+0>:	push   rbp
+   0x00000000004005fd <+1>:	mov    rbp,rsp
+   0x0000000000400600 <+4>:	push   rbx
+   0x0000000000400601 <+5>:	sub    rsp,0x18
+   0x0000000000400605 <+9>:	mov    QWORD PTR [rbp-0x18],rdi
+   0x0000000000400609 <+13>:	mov    DWORD PTR [rbp-0x1c],esi
+   0x000000000040060c <+16>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400610 <+20>:	mov    rax,QWORD PTR [rax+0x8]
+   0x0000000000400614 <+24>:	test   rax,rax
+   0x0000000000400617 <+27>:	jne    0x40065c <list_add_to_tail+96>
+   0x0000000000400619 <+29>:	mov    edi,0x10
+   0x000000000040061e <+34>:	call   0x4004c0 <malloc@plt>
+   0x0000000000400623 <+39>:	mov    rdx,rax
+   0x0000000000400626 <+42>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000040062a <+46>:	mov    QWORD PTR [rax+0x8],rdx
+   0x000000000040062e <+50>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400632 <+54>:	mov    rax,QWORD PTR [rax+0x8]
+   0x0000000000400636 <+58>:	mov    edx,DWORD PTR [rbp-0x1c]
+   0x0000000000400639 <+61>:	mov    DWORD PTR [rax],edx
+   0x000000000040063b <+63>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000040063f <+67>:	mov    rax,QWORD PTR [rax+0x8]
+   0x0000000000400643 <+71>:	mov    QWORD PTR [rax+0x8],0x0
+   0x000000000040064b <+79>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000040064f <+83>:	mov    rdx,QWORD PTR [rax+0x8]
+   0x0000000000400653 <+87>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400657 <+91>:	mov    QWORD PTR [rax],rdx
+   0x000000000040065a <+94>:	jmp    0x4006ab <list_add_to_tail+175>
+   0x000000000040065c <+96>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400660 <+100>:	mov    rbx,QWORD PTR [rax+0x8]
+   0x0000000000400664 <+104>:	mov    edi,0x10
+   0x0000000000400669 <+109>:	call   0x4004c0 <malloc@plt>
+   0x000000000040066e <+114>:	mov    QWORD PTR [rbx+0x8],rax
+   0x0000000000400672 <+118>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400676 <+122>:	mov    rax,QWORD PTR [rax+0x8]
+   0x000000000040067a <+126>:	mov    rax,QWORD PTR [rax+0x8]
+   0x000000000040067e <+130>:	mov    edx,DWORD PTR [rbp-0x1c]
+   0x0000000000400681 <+133>:	mov    DWORD PTR [rax],edx
+   0x0000000000400683 <+135>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x0000000000400687 <+139>:	mov    rax,QWORD PTR [rax+0x8]
+   0x000000000040068b <+143>:	mov    rax,QWORD PTR [rax+0x8]
+   0x000000000040068f <+147>:	mov    QWORD PTR [rax+0x8],0x0
+   0x0000000000400697 <+155>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x000000000040069b <+159>:	mov    rax,QWORD PTR [rax+0x8]
+   0x000000000040069f <+163>:	mov    rdx,QWORD PTR [rax+0x8]
+   0x00000000004006a3 <+167>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x00000000004006a7 <+171>:	mov    QWORD PTR [rax+0x8],rdx
+   0x00000000004006ab <+175>:	nop
+   0x00000000004006ac <+176>:	add    rsp,0x18
+   0x00000000004006b0 <+180>:	pop    rbx
+---Type <return> to continue, or q <return> to quit---
+   0x00000000004006b1 <+181>:	pop    rbp
+   0x00000000004006b2 <+182>:	ret    
+End of assembler dump.
+(gdb) disass list_printall 
+Dump of assembler code for function list_printall:
+   0x00000000004006b3 <+0>:	push   rbp
+   0x00000000004006b4 <+1>:	mov    rbp,rsp
+   0x00000000004006b7 <+4>:	sub    rsp,0x20
+   0x00000000004006bb <+8>:	mov    QWORD PTR [rbp-0x18],rdi
+   0x00000000004006bf <+12>:	mov    rax,QWORD PTR [rbp-0x18]
+   0x00000000004006c3 <+16>:	mov    rax,QWORD PTR [rax]
+   0x00000000004006c6 <+19>:	mov    QWORD PTR [rbp-0x8],rax
+   0x00000000004006ca <+23>:	jmp    0x4006ef <list_printall+60>
+   0x00000000004006cc <+25>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x00000000004006d0 <+29>:	mov    eax,DWORD PTR [rax]
+   0x00000000004006d2 <+31>:	mov    esi,eax
+   0x00000000004006d4 <+33>:	mov    edi,0x400804
+   0x00000000004006d9 <+38>:	mov    eax,0x0
+   0x00000000004006de <+43>:	call   0x4004a0 <printf@plt>
+   0x00000000004006e3 <+48>:	mov    rax,QWORD PTR [rbp-0x8]
+   0x00000000004006e7 <+52>:	mov    rax,QWORD PTR [rax+0x8]
+   0x00000000004006eb <+56>:	mov    QWORD PTR [rbp-0x8],rax
+   0x00000000004006ef <+60>:	cmp    QWORD PTR [rbp-0x8],0x0
+   0x00000000004006f4 <+65>:	jne    0x4006cc <list_printall+25>
+   0x00000000004006f6 <+67>:	nop
+   0x00000000004006f7 <+68>:	leave  
+   0x00000000004006f8 <+69>:	ret    
+End of assembler dump.
+(gdb) x/s 0x400804
+0x400804:	"%d\n"
+(gdb) 
+

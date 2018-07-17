@@ -1,0 +1,26 @@
+(gdb) disass main
+Dump of assembler code for function main:
+   0x0000000000400596 <+0>:	push   rbp
+   0x0000000000400597 <+1>:	mov    rbp,rsp
+   0x000000000040059a <+4>:	sub    rsp,0x420
+   0x00000000004005a1 <+11>:	mov    DWORD PTR [rbp-0x414],edi
+   0x00000000004005a7 <+17>:	mov    QWORD PTR [rbp-0x420],rsi
+   0x00000000004005ae <+24>:	mov    rax,QWORD PTR fs:0x28
+   0x00000000004005b7 <+33>:	mov    QWORD PTR [rbp-0x8],rax
+   0x00000000004005bb <+37>:	xor    eax,eax
+   0x00000000004005bd <+39>:	mov    rax,QWORD PTR [rbp-0x420]
+   0x00000000004005c4 <+46>:	add    rax,0x8
+   0x00000000004005c8 <+50>:	mov    rdx,QWORD PTR [rax]
+   0x00000000004005cb <+53>:	lea    rax,[rbp-0x410]
+   0x00000000004005d2 <+60>:	mov    rsi,rdx
+   0x00000000004005d5 <+63>:	mov    rdi,rax
+   0x00000000004005d8 <+66>:	call   0x400460 <strcpy@plt>
+   0x00000000004005dd <+71>:	mov    eax,0x0
+   0x00000000004005e2 <+76>:	mov    rcx,QWORD PTR [rbp-0x8]
+   0x00000000004005e6 <+80>:	xor    rcx,QWORD PTR fs:0x28
+   0x00000000004005ef <+89>:	je     0x4005f6 <main+96>
+   0x00000000004005f1 <+91>:	call   0x400470 <__stack_chk_fail@plt>
+   0x00000000004005f6 <+96>:	leave  
+   0x00000000004005f7 <+97>:	ret    
+End of assembler dump.
+

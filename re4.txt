@@ -1,0 +1,49 @@
+(gdb) disass main
+Dump of assembler code for function main:
+   0x00000000004005ba <+0>:	push   rbp
+   0x00000000004005bb <+1>:	mov    rbp,rsp
+   0x00000000004005be <+4>:	mov    edi,0xa
+   0x00000000004005c3 <+9>:	call   0x400566 <foo>
+   0x00000000004005c8 <+14>:	mov    esi,eax
+   0x00000000004005ca <+16>:	mov    edi,0x400664
+   0x00000000004005cf <+21>:	mov    eax,0x0
+   0x00000000004005d4 <+26>:	call   0x400430 <printf@plt>
+   0x00000000004005d9 <+31>:	mov    eax,0x0
+   0x00000000004005de <+36>:	pop    rbp
+   0x00000000004005df <+37>:	ret    
+End of assembler dump.
+(gdb) disas foo
+Dump of assembler code for function foo:
+   0x0000000000400566 <+0>:	push   rbp
+   0x0000000000400567 <+1>:	mov    rbp,rsp
+   0x000000000040056a <+4>:	push   rbx
+   0x000000000040056b <+5>:	sub    rsp,0x18
+   0x000000000040056f <+9>:	mov    DWORD PTR [rbp-0x14],edi
+   0x0000000000400572 <+12>:	cmp    DWORD PTR [rbp-0x14],0x0
+   0x0000000000400576 <+16>:	jns    0x400582 <foo+28>
+   0x0000000000400578 <+18>:	mov    edi,0x0
+   0x000000000040057d <+23>:	call   0x400450 <exit@plt>
+   0x0000000000400582 <+28>:	cmp    DWORD PTR [rbp-0x14],0x1
+   0x0000000000400586 <+32>:	je     0x40058e <foo+40>
+   0x0000000000400588 <+34>:	cmp    DWORD PTR [rbp-0x14],0x2
+   0x000000000040058c <+38>:	jne    0x400595 <foo+47>
+   0x000000000040058e <+40>:	mov    eax,0x1
+   0x0000000000400593 <+45>:	jmp    0x4005b3 <foo+77>
+   0x0000000000400595 <+47>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x0000000000400598 <+50>:	sub    eax,0x1
+   0x000000000040059b <+53>:	mov    edi,eax
+   0x000000000040059d <+55>:	call   0x400566 <foo>
+   0x00000000004005a2 <+60>:	mov    ebx,eax
+   0x00000000004005a4 <+62>:	mov    eax,DWORD PTR [rbp-0x14]
+   0x00000000004005a7 <+65>:	sub    eax,0x2
+   0x00000000004005aa <+68>:	mov    edi,eax
+   0x00000000004005ac <+70>:	call   0x400566 <foo>
+   0x00000000004005b1 <+75>:	add    eax,ebx
+   0x00000000004005b3 <+77>:	add    rsp,0x18
+   0x00000000004005b7 <+81>:	pop    rbx
+   0x00000000004005b8 <+82>:	pop    rbp
+   0x00000000004005b9 <+83>:	ret    
+End of assembler dump.
+(gdb) x/s 0x400664
+0x400664:	"%d\n"
+
