@@ -7,4 +7,4 @@ You can see solutions at the link below.
 * re2 : [solved!](https://github.com/heaeat/handray/wiki#re2)  
 * re3 : [solved!](https://github.com/heaeat/handray/wiki#re3)  
 * re4 : [solved!](https://github.com/heaeat/handray/wiki#re4)  
-* re5 : [-ing..](https://github.com/heaeat/handray/wiki#re5)  
+* re5 : [solved!](https://github.com/heaeat/handray/wiki#re5)  
